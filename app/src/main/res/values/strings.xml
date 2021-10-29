@@ -5,4 +5,9 @@
     <string name="img">imgvalue</string>
     <string name="subtitle">Subtitle</string>
     <string name="genres">Genres</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="now_playing_frag">Now Playing</string>
+    <string name="upcoming">Upcoming</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

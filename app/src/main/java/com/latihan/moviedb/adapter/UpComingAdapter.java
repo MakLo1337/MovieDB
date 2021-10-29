@@ -1,6 +1,5 @@
 package com.latihan.moviedb.adapter;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -26,34 +25,34 @@ import com.bumptech.glide.request.target.Target;
 import com.latihan.moviedb.R;
 import com.latihan.moviedb.helper.Const;
 import com.latihan.moviedb.model.NowPlaying;
+import com.latihan.moviedb.model.UpComing;
 
 import java.util.List;
 
-import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
-public class NowPlayingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class UpComingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final int VIEW_TYPE_LOADING = 0;
     private final int VIEW_TYPE_ITEM = 1;
     private Context context;
-    private List<NowPlaying.Results> listNowPlaying;
+    private List<UpComing.Results> listUpComing;
 
-    public NowPlayingAdapter(Context context){
+    public UpComingAdapter(Context context){
         this.context = context;
     }
-    private List<NowPlaying.Results> getListNowPlaying() {
-        return listNowPlaying;
+    private List<UpComing.Results> getListUpComing() {
+        return listUpComing;
     }
-    public void setListNowPlaying(List<NowPlaying.Results> listNowPlaying) {
-        this.listNowPlaying = listNowPlaying;
+    public void setListUpComing(List<UpComing.Results> listUpComing) {
+        this.listUpComing = listUpComing;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_ITEM){
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_now_playing, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_upcoming, parent, false);
             return new ItemViewHolder(view);
         } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_loading_endless, parent, false);
@@ -70,12 +69,12 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public int getItemViewType(int position) {
-        return listNowPlaying.get(position) == null ? VIEW_TYPE_LOADING : VIEW_TYPE_ITEM;
+        return listUpComing.get(position) == null ? VIEW_TYPE_LOADING : VIEW_TYPE_ITEM;
     }
 
     @Override
     public int getItemCount() {
-        return listNowPlaying == null ? 0 : listNowPlaying.size();
+        return listUpComing == null ? 0 : listUpComing.size();
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder{
@@ -85,12 +84,12 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         ProgressBar progressBar;
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardView = itemView.findViewById(R.id.cv_card_nowplaying);
-            img_view = itemView.findViewById(R.id.img_view_crd_nowplaying);
-            lbl_title = itemView.findViewById(R.id.lbl_title_crd_nowplaying);
-            lbl_subtitle = itemView.findViewById(R.id.lbl_subtitle_crd_nowplaying);
-            lbl_sub2 = itemView.findViewById(R.id.lbl_subtitle2_crd_nowplaying);
-            progressBar = itemView.findViewById(R.id.crd_img_progress);
+            cardView = itemView.findViewById(R.id.cv_card_upcoming);
+            img_view = itemView.findViewById(R.id.img_view_crd_upcoming);
+            lbl_title = itemView.findViewById(R.id.lbl_title_crd_upcoming);
+            lbl_subtitle = itemView.findViewById(R.id.lbl_subtitle_crd_upcoming);
+            lbl_sub2 = itemView.findViewById(R.id.lbl_subtitle2_crd_upcoming);
+            progressBar = itemView.findViewById(R.id.crd_img_progress_upcoming);
         }
     }
 
@@ -102,10 +101,10 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     private void populateItemRows(ItemViewHolder viewHolder, int position){
-        final NowPlaying.Results results = getListNowPlaying().get(position);
+        final UpComing.Results results = getListUpComing().get(position);
         viewHolder.lbl_title.setText(results.getTitle());
         viewHolder.lbl_subtitle.setText(results.getOverview());
-        viewHolder.lbl_sub2.setText(String.valueOf(results.getVote_average()));
+        viewHolder.lbl_sub2.setText(String.valueOf(results.getRelease_date()));
         Glide.with(context)
                 .load(Const.IMG_URL + results.getPoster_path())
                 .listener(new RequestListener<Drawable>() {
@@ -132,7 +131,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 Bundle bundle = new Bundle();
                 bundle.putString("movieId", "" + results.getId());
                 Navigation.findNavController(view)
-                        .navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
+                        .navigate(R.id.action_upcomingFragment_to_movieDetailsFragment, bundle);
             }
         });
     }

@@ -16,10 +16,7 @@
         android:theme="@style/Theme.MovieDB"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.MovieDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.NowPlayingActivity"
+            android:name=".view.activities.MainMenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,8 +25,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.MainActivity"
-            android:exported="true"></activity>
+            android:name=".view.activities.MovieDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.NowPlayingActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".view.activities.MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.latihan.moviedb.view;
+package com.latihan.moviedb.view.activities;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -19,8 +18,6 @@ import com.latihan.moviedb.R;
 import com.latihan.moviedb.helper.Const;
 import com.latihan.moviedb.model.Movies;
 import com.latihan.moviedb.viewModel.MovieVM;
-
-import java.util.List;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
@@ -46,11 +43,11 @@ public class MovieDetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         movieId = intent.getStringExtra("movie_id");
 
-        lbl_mvd_title = findViewById(R.id.lbl_mvd_title);
-        lbl_mvd_subtitle = findViewById(R.id.lbl_mvd_subtitle);
-        lbl_mvd_genre = findViewById(R.id.lbl_mvd_genre);
-        lbl_mvd_rate = findViewById(R.id.lbl_mvd_rate);
-        img_view_mvd = findViewById(R.id.img_view_mvd);
+        lbl_mvd_title = findViewById(R.id.lbl_mvdf_title);
+        lbl_mvd_subtitle = findViewById(R.id.lbl_mvdf_subtitle);
+        lbl_mvd_genre = findViewById(R.id.lbl_mvdf_genre);
+        lbl_mvd_rate = findViewById(R.id.lbl_mvdf_rate);
+        img_view_mvd = findViewById(R.id.img_view_mvdf);
 
         toolbar2.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

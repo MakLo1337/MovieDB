@@ -1,4 +1,4 @@
-package com.latihan.moviedb.view;
+package com.latihan.moviedb.view.activities;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.latihan.moviedb.R;
-import com.latihan.moviedb.adapter.NowPlayingAdapter;
 import com.latihan.moviedb.model.NowPlaying;
 import com.latihan.moviedb.viewModel.MovieVM;
 
@@ -35,17 +34,17 @@ public class NowPlayingActivity extends AppCompatActivity {
 //        actionBar.setDisplayShowHomeEnabled(true);
         recyclerView = findViewById(R.id.rv_nowplaying);
         view_model = new ViewModelProvider(NowPlayingActivity.this).get(MovieVM.class);
-        view_model.getNowPlaying();
-        view_model.getResultGetNowPlaying().observe(NowPlayingActivity.this, showNowPlaying);
+        view_model.getNowPlaying(2);
+//        view_model.getResultGetNowPlaying().observe(NowPlayingActivity.this, showNowPlaying);
     }
 
     private Observer<NowPlaying> showNowPlaying = new Observer<NowPlaying>() {
         @Override
         public void onChanged(NowPlaying nowPlaying) {
             recyclerView.setLayoutManager(new LinearLayoutManager(NowPlayingActivity.this));
-            NowPlayingAdapter adapter = new NowPlayingAdapter(NowPlayingActivity.this);
-            adapter.setListNowPlaying(nowPlaying.getResults());
-            recyclerView.setAdapter(adapter);
+//            NowPlayingAdapter adapter = new NowPlayingAdapter(NowPlayingActivity.this);
+//            adapter.setListNowPlaying(nowPlaying.getResults());
+//            recyclerView.setAdapter(adapter);
         }
     };
 }
